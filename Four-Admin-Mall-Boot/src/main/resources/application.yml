@@ -1,20 +1,13 @@
 server:
-  servlet:
-    session:
-      timeout: 30m
-      cookie:
-        http-only: true
-        secure: false
   port: 8080
-logging:
-  level:
-    cn.edu.lingnan.projectmanagment.mapper: debug
 
 spring:
+  profiles:
+    active: dev
   datasource:
     username: root
     password: 20177600
-    url: jdbc:mysql://47.98.240.31:3307/four_admin_mall
+    url: jdbc:mysql://47.98.240.31:3307/four_admin_mall?userSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置
@@ -35,6 +28,13 @@ spring:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 
 #  cache:
 #    type: redis
@@ -51,17 +51,5 @@ spring:
 #      shutdown-timeout: 100 #关闭超时时间
 #    password: 2017764300
 
-  security:
-    loginType: json
-
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: true
-
-
-#mybatis开启别名
-mybatis:
-  type-aliases-package: cn.edu.lingnan.projectmanagment.bean
-  configuration:
-    map-underscore-to-camel-case: true
+#  security:
+#    loginType: json
