@@ -8,6 +8,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import {api_test} from '@/network/api/admin';
 
 export default {
   name: 'Home',
@@ -19,14 +20,18 @@ export default {
     return {}
   },
   computed: {},
-  create () {
-
+  created () {
+    this.handleProductList()
   },
   mounted () {
 
   },
   methods: {
-
+    async handleProductList() {
+      console.log("111");
+      const res = await api_test()
+      console.log(res.data);
+    },
   },
   filter: {
 

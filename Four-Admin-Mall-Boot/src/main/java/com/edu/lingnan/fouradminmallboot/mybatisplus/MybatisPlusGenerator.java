@@ -39,7 +39,7 @@ public class MybatisPlusGenerator {
         globalConfig.setAuthor("four-admin-mall");
         globalConfig.setOpen(false);
         //是否覆盖
-        globalConfig.setFileOverride(false);
+        globalConfig.setFileOverride(true);
         globalConfig.setServiceName("%sService");
         //设置主键策略
         globalConfig.setIdType(IdType.ID_WORKER);
@@ -60,7 +60,7 @@ public class MybatisPlusGenerator {
         //3.包的配置
         PackageConfig pc = new PackageConfig();
         //1.一定要确定module名称，按表名前缀选择
-        pc.setModuleName("oms");
+        pc.setModuleName("ums");
 //        pc.setModuleName("oms");
         pc.setParent("com.edu.lingnan.fouradminmallboot");
         pc.setEntity("pojo");
@@ -72,7 +72,7 @@ public class MybatisPlusGenerator {
         //4.策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
         //2.修改要生产的表
-        strategyConfig.setInclude("oms_order");
+        strategyConfig.setInclude("ums_resource");
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setEntityLombokModel(true);

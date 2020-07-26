@@ -27,6 +27,8 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  main:
+    allow-bean-definition-overriding: true
 
 mybatis-plus:
   configuration:
@@ -35,6 +37,13 @@ mybatis-plus:
     db-config:
       logic-delete-value: 1
       logic-not-delete-value: 0
+  mapper-locations: classpath*:com/edu/lingnan/fouradminmallboot/**/mapper/xml/*.xml
+
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mall-admin-secret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: 'Bearer ' #JWT负载中拿到开头
 
 #  cache:
 #    type: redis
@@ -53,3 +62,23 @@ mybatis-plus:
 
 #  security:
 #    loginType: json
+
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /actuator/**
+      - /druid/**
+      - /ums/admin/login
+      - /ums/admin/register
+      - /ums/admin/info
+      - /ums/admin/logout
+      - /ums/minio/upload
