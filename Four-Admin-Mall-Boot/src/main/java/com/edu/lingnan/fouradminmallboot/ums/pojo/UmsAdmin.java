@@ -19,10 +19,10 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Accessors(chain = true)
 @ApiModel(value="UmsAdmin对象", description="后台用户表")
 public class UmsAdmin implements Serializable {
 

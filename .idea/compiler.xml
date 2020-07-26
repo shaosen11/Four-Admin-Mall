@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Four-Admin-Mall" />
         <module name="Four-Admin-Mall-Boot" />
       </profile>
     </annotationProcessing>
@@ -15,6 +14,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Four-Admin-Mall" options="-parameters" />
       <module name="Four-Admin-Mall-Boot" options="-parameters" />
     </option>
   </component>
