@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css'
 
-import { Form, FormItem, Button, ButtonGroup, Input, Checkbox, Card, Avatar, Dropdown, DropdownItem, DropdownMenu, Menu, MenuItem, MenuItemGroup, Submenu, Container, Aside, Header, Main, Row, Col, Breadcrumb, BreadcrumbItem, Cascader, Select, Option, Table, TableColumn, Image, Switch, Dialog, Pagination, Message, MessageBox, Loading, Notification } from 'element-ui'
+import { Form, FormItem, Button, ButtonGroup, Input, Checkbox, Card, Avatar, Dropdown, DropdownItem, DropdownMenu, Menu, MenuItem, MenuItemGroup, Submenu, Container, Aside, Header, Main, Row, Col, Breadcrumb, BreadcrumbItem, Cascader, Select, Option, Table, TableColumn, Image, Switch, Dialog, Pagination, DatePicker, Steps, Step, Message, MessageBox, Loading, Notification } from 'element-ui'
 
 Vue.use(Form)
 Vue.use(FormItem)
@@ -52,6 +52,11 @@ Vue.use(Switch)
 Vue.use(Dialog)
 
 Vue.use(Pagination)
+
+Vue.use(DatePicker)
+
+Vue.use(Steps)
+Vue.use(Step)
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert

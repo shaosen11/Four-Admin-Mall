@@ -8,7 +8,40 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    redirect: '/oms/orderList',
+    children: [
+      {
+        path: '/oms/orderList',
+        name: 'OrderList',
+        //  懒加载
+        component: () => import('../views/oms/OrderList.vue')
+      },
+      {
+        path: '/oms/detailOrder',
+        name: 'DetailOrder',
+        //  懒加载
+        component: () => import('../views/oms/DetailOrder.vue')
+      },
+      {
+        path: '/oms/shipList',
+        name: 'ShipList',
+        //  懒加载
+        component: () => import('../views/oms/ShipList.vue')
+      },
+      {
+        path: '/oms/orderTracking',
+        name: 'OrderTracking',
+        //  懒加载
+        component: () => import('../views/oms/OrderTracking.vue')
+      },
+      {
+        path: '/oms/orderSetting',
+        name: 'OrderSetting',
+        //  懒加载
+        component: () => import('../views/oms/OrderSetting.vue')
+      }
+    ]
   },
   {
     path: '/about',
