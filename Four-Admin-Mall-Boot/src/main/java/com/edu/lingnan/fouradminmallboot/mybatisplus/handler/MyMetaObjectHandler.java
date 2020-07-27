@@ -21,7 +21,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void insertFill(MetaObject metaObject) {
-//        log.info("start insert fill");
+        log.info("start insert fill");
         this.setFieldValByName("gmtCreate", new Date(), metaObject);
         this.setFieldValByName("gmtModified", new Date(), metaObject);
     }
@@ -32,7 +32,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void updateFill(MetaObject metaObject) {
-//        log.info("start insert fill");
+        log.info("start insert fill");
         this.setFieldValByName("gmtModified", new Date(), metaObject);
     }
 }
