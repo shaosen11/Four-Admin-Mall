@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.lingnan.fouradminmallboot.ums.mapper.UmsAdminRoleMapper">
+    <select id="findByUsername" resultType="com.edu.lingnan.fouradminmallboot.ums.pojo.UmsAdmin">
+        select *
+        from ums_admin a
+        where a.username = #{username}
+    </select>
+
+    <select id="findRoleByUsername" resultType="java.lang.String">
+        select role_code
+        from ums_role r
+                 left join ums_admin_role ar on r.id = ar.role_id
+                 left join ums_admin a on a.id = ar.admin_id
+        where a.username = #{username}
+    </select>
+
+    <select id="findAuthorityByRoleCodes" resultType="java.lang.String">
+        select url
+        from ums_resource res
+        left join ums_role_resource rr on res.id = rr.resource_id
+        left join ums_role r on r.id = rr.role_id
+        where r.role_code in
+        <foreach collection="roleCodes" item="roleCode" open="(" separator="," close=")">
+            #{roleCode}
+        </foreach>
+    </select>
+
+    <select id="getResourceList" resultType="com.edu.lingnan.fouradminmallboot.ums.pojo.UmsResource">
+        SELECT
+            ur.id id,
+            ur.resource_name resourceName,
+            ur.url url,
+            ur.gmt_create gmtCreate,
+            ur.gmt_modified gmtModified,
+            ur.delete_id deleteId
+        FROM
+            ums_admin_role ar
+                LEFT JOIN ums_role r ON ar.role_id = r.id
+                LEFT JOIN ums_role_resource rrr ON r.id = rrr.role_id
+                LEFT JOIN ums_resource ur ON ur.id = rrr.resource_id
+        WHERE
+            ar.admin_id = #{adminId}
+          AND ur.id IS NOT NULL
+        GROUP BY
+            ur.id
+    </select>
+</mapper>

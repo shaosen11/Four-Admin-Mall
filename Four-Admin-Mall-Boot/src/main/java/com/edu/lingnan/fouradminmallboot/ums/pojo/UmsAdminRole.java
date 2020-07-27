@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 后台用户表
+ * 管理员角色映射表
  * </p>
  *
  * @author four-admin-mall
@@ -19,45 +19,33 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@ApiModel(value="UmsAdmin对象", description="后台用户表")
-public class UmsAdmin implements Serializable {
+@Accessors(chain = true)
+@ApiModel(value="UmsAdminRole对象", description="管理员角色映射表")
+public class UmsAdminRole implements Serializable {
 
 
-    @ApiModelProperty(value = "后台管理员id")
-    @TableId(value = "id", type = IdType.AUTO)
+    @ApiModelProperty(value = "自增id")
+    @TableId(value = "id", type = IdType.ID_WORKER)
     private Long id;
 
-    @ApiModelProperty(value = "管理员名称")
-    private String username;
+    @ApiModelProperty(value = "用户id")
+    private Long adminId;
 
-    @ApiModelProperty(value = "密码")
-    private String password;
-
-    @ApiModelProperty(value = "头像")
-    private String icon;
-
-    @ApiModelProperty(value = "邮箱")
-    private String email;
-
-    @ApiModelProperty(value = "昵称")
-    private String nickName;
-
-    @ApiModelProperty(value = "备注信息")
-    private String note;
+    @ApiModelProperty(value = "角色id")
+    private Long roleId;
 
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
 
-    @ApiModelProperty(value = "最后登录时间")
+    @ApiModelProperty(value = "修改时间")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
-    @ApiModelProperty(value = "帐号启用状态：0->禁用；1->启用")
+    @ApiModelProperty(value = "删除状态：0->未删除；1->已删除")
     @TableLogic
     private Integer deleteId;
 

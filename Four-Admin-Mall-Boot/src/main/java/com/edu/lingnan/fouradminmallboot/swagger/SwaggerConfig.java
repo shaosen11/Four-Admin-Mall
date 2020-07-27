@@ -1,4 +1,4 @@
-package com.edu.lingnan.fouradminmallboot.swagger.config;
+package com.edu.lingnan.fouradminmallboot.swagger;
 
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
@@ -51,7 +51,10 @@ public class SwaggerConfig {
                 //withMethodAnnotation，扫描方法上的注解
                 .apis(basePackage("com.edu.lingnan.fouradminmallboot.oms.controller"
                         + splitor
-                        + "com.edu.lingnan.fouradminmallboot.pms.controller"))
+                        + "com.edu.lingnan.fouradminmallboot.pms.controller"
+                        + splitor
+                        + "com.edu.lingnan.fouradminmallboot.ums.controller"
+                ))
                 .paths(PathSelectors.any())
                 //.paths()过滤什么
                 .build();

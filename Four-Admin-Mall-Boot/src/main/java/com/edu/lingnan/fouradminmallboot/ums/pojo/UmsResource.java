@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 后台用户表
+ * 资源表
  * </p>
  *
  * @author four-admin-mall
@@ -19,35 +19,22 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@ApiModel(value="UmsAdmin对象", description="后台用户表")
-public class UmsAdmin implements Serializable {
+@Accessors(chain = true)
+@ApiModel(value="UmsResource对象", description="资源表")
+public class UmsResource implements Serializable {
 
-
-    @ApiModelProperty(value = "后台管理员id")
+    @ApiModelProperty(value = "资源id")
     @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
-    @ApiModelProperty(value = "管理员名称")
-    private String username;
+    @ApiModelProperty(value = "资源名称")
+    private String resourceName;
 
-    @ApiModelProperty(value = "密码")
-    private String password;
-
-    @ApiModelProperty(value = "头像")
-    private String icon;
-
-    @ApiModelProperty(value = "邮箱")
-    private String email;
-
-    @ApiModelProperty(value = "昵称")
-    private String nickName;
-
-    @ApiModelProperty(value = "备注信息")
-    private String note;
+    @ApiModelProperty(value = "资源URL")
+    private String url;
 
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
@@ -57,7 +44,7 @@ public class UmsAdmin implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
-    @ApiModelProperty(value = "帐号启用状态：0->禁用；1->启用")
+    @ApiModelProperty(value = "删除状态：0->未删除；1->已删除")
     @TableLogic
     private Integer deleteId;
 

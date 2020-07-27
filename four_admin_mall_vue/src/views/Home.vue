@@ -51,10 +51,14 @@
 </template>
 
 <script>
+// @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld.vue'
+import {api_test} from '@/network/api/admin';
 
 export default {
   name: 'Home',
   components: {
+    HelloWorld
   },
   props: {},
   data () {
@@ -68,6 +72,9 @@ export default {
       menus: []
     }
   },
+  computed: {},
+  created () {
+    this.handleProductList()
   computed: {
     firstMenus () {
       return this.menus.filter(item => item.parentId === 0)
@@ -87,6 +94,11 @@ export default {
     this.getInfo()
   },
   methods: {
+    async handleProductList() {
+      console.log("111");
+      const res = await api_test()
+      console.log(res.data);
+    },
     handleCommand (command) {
       console.log(command)
       if (command === 'quit') {
